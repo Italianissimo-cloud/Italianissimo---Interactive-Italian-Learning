@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italianissimo - Passato Prossimo con Professor Bigfoot</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #009ffd 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Italian flag pattern background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, 
+                    rgba(0, 146, 70, 0.05) 0%, 
+                    rgba(0, 146, 70, 0.05) 33%, 
+                    rgba(255, 255, 255, 0.05) 33%, 
+                    rgba(255, 255, 255, 0.05) 66%, 
+                    rgba(206, 43, 55, 0.05) 66%, 
+                    rgba(206, 43, 55, 0.05) 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #ce2b37;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ce2b37;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo::before {
+            content: "🇮🇹";
+            margin-right: 12px;
+            font-size: 32px;
+        }
+
+        .youtube-btn {
+            background: #ff0000;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .youtube-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+        }
+
+        .youtube-btn::before {
+            content: "▶";
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 0 0 50px 50px;
+            text-align: center;
+        }
+
+        .lesson-badge {
+            background: linear-gradient(135deg, #009246, #ce2b37);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #2c3e50;
+        }
+
+        .hero .italian-title {
+            font-size: 32px;
+            color: #009246;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .video-link {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .video-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+        }
+
+        .video-link::before {
+            content: "🎥";
+            font-size: 20px;
+        }
+
+        /* Grammar Summary */
+        .grammar-summary {
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            border: 3px solid #009246;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .summary-card h2 {
+            color: #009246;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        .grammar-rules {
+            display: grid;
+            gap: 20px;
+        }
+
+        .rule-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ce2b37;
+        }
+
+        .rule-item h3 {
+            color: #ce2b37;
+            margin-bottom: 10px;
+        }
+
+        .example {
+            background: rgba(0, 146, 70, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-style: italic;
+            color: #005a2b;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .quiz-header h2 {
+            font-size: 42px;
+            color: #2c3e50;
+            margin-bottom: 16px;
+        }
+
+        .quiz-progress {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar {
+            background: linear-gradient(90deg, #009246, #ce2b37);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 3px solid #009246;
+            display: none;
+        }
+
+        .quiz-card.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            padding: 16px 24px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .option:hover {
+            border-color: #009246;
+            background: rgba(0, 146, 70, 0.1);
+            transform: scale(1.02);
+        }
+
+        .option.selected {
+            border-color: #009246;
+            background: rgba(0, 146, 70, 0.2);
+        }
+
+        .option.correct {
+            border-color: #009246;
+            background: rgba(0, 146, 70, 0.3);
+            color: #005a2b;
+        }
+
+        .option.wrong {
+            border-color: #ce2b37;
+            background: rgba(206, 43, 55, 0.2);
+            color: #8b1e28;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .feedback.correct {
+            background: rgba(0, 146, 70, 0.2);
+            color: #005a2b;
+            border: 2px solid #009246;
+        }
+
+        .feedback.wrong {
+            background: rgba(206, 43, 55, 0.2);
+            color: #8b1e28;
+            border: 2px solid #ce2b37;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #009246, #2ea043);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 146, 70, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #2c3e50;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Practice Exercises */
+        .practice {
+            padding: 80px 0;
+            background: rgba(206, 43, 55, 0.1);
+        }
+
+        .practice h2 {
+            text-align: center;
+            font-size: 42px;
+            color: white;
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .exercise-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            border: 3px solid #ce2b37;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(206, 43, 55, 0.3);
+        }
+
+        .exercise-card h3 {
+            color: #ce2b37;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .fill-blank {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 100px;
+            padding: 5px 10px;
+            border: 2px dashed #009246;
+            border-radius: 5px;
+            background: rgba(0, 146, 70, 0.1);
+            margin: 0 5px;
+        }
+
+        .score-display {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px solid #009246;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .score-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #009246;
+        }
+
+        /* Results section */
+        .results {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .results h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #009246;
+        }
+
+        .bigfoot-quote {
+            background: rgba(0, 146, 70, 0.1);
+            border-left: 5px solid #009246;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            font-style: italic;
+            color: #005a2b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .quiz-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .score-display {
+                position: static;
+                margin: 20px auto;
+            }
+
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Italianissimo</a>
+                <a href="https://youtu.be/Q42WlYlistc?si=uwiuiXIEgMCItMKp" class="youtube-btn" target="_blank">Watch Video Lesson</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="score-display">
+        <div>Your Score</div>
+        <div class="score-number" id="score">0/10</div>
+        <div style="font-size: 12px; margin-top: 5px;">🦶 Bravo!</div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="lesson-badge">Lezione A1-A2</div>
+                <h1>Passato Prossimo</h1>
+                <p class="italian-title">Il Tempo Passato con Professor Bigfoot</p>
+                <p>Master the Italian past tense through interactive exercises based on our YouTube lesson!</p>
+                <a href="https://youtu.be/Q42WlYlistc?si=uwiuiXIEgMCItMKp" class="video-link" target="_blank">
+                    Watch the Full Lesson
+                </a>
+            </div>
+        </section>
+
+        <section class="grammar-summary">
+            <div class="container">
+                <div class="summary-card">
+                    <h2>📚 Grammar Recap</h2>
+                    <div class="grammar-rules">
+                        <div class="rule-item">
+                            <h3>🔧 Formation: Auxiliary + Past Participle</h3>
+                            <p>Passato Prossimo = <strong>AVERE/ESSERE</strong> + <strong>Past Participle</strong></p>
+                            <div class="example">Io ho mangiato la pizza (I ate the pizza)</div>
+                            <div class="example">Maria è andata a casa (Maria went home)</div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h3>🚶‍♂️ ESSERE: Movement & Being Verbs</h3>
+                            <p>Use with intransitive verbs of movement and state changes</p>
+                            <div class="example">andare → sono andato/a (I went)</div>
+                            <div class="example">venire → sono venuto/a (I came)</div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h3>🤝 AVERE: Transitive Verbs</h3>
+                            <p>Use with verbs that take a direct object</p>
+                            <div class="example">mangiare → ho mangiato (I ate)</div>
+                            <div class="example">comprare → ho comprato (I bought)</div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <h3>⚖️ Agreement with ESSERE</h3>
+                            <p>Past participle agrees in gender and number with subject</p>
+                            <div class="example">Marco è andato / Maria è andata / Loro sono andati</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <div class="container">
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <h2>🧠 Quiz Time!</h2>
+                        <p>Test your understanding of the Passato Prossimo</p>
+                        <div class="quiz-progress">
+                            <div class="quiz-progress-bar" id="progress-bar"></div>
+                        </div>
+                        <div id="question-counter">Question 1 of 10</div>
+                    </div>
+
+                    <!-- Quiz Questions -->
+                    <div class="quiz-card active" data-question="1">
+                        <div class="question">Complete: "Ieri Clara _____ una pizza deliziosa."</div>
+                        <div class="options">
+                            <div class="option" data-correct="true">ha mangiato</div>
+                            <div class="option" data-correct="false">è mangiata</div>
+                            <div class="option" data-correct="false">ha mangiata</div>
+                            <div class="option" data-correct="false">sono mangiato</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">🎉 Perfetto! "Mangiare" uses AVERE because it's transitive.</div>
+                            <div class="wrong-feedback">❌ Remember: "mangiare" is transitive, so we use AVERE + past participle.</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="2">
+                        <div class="question">Which auxiliary verb goes with "andare"?</div>
+                        <div class="options">
+                            <div class="option" data-correct="false">avere</div>
+                            <div class="option" data-correct="true">essere</div>
+                            <div class="option" data-correct="false">both</div>
+                            <div class="option" data-correct="false">neither</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">🚶‍♂️ Esatto! "Andare" is a movement verb, so it uses ESSERE.</div>
+                            <div class="wrong-feedback">🦶 As Professor Bigfoot says: movement verbs are "introspective hikers" that use ESSERE!</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="3">
+                        <div class="question">Complete: "Marco e Luca _____ _____ al cinema."</div>
+                        <div class="options">
+                            <div class="option" data-correct="false">hanno andato</div>
+                            <div class="option" data-correct="true">sono andati</div>
+                            <div class="option" data-correct="false">è andato</div>
+                            <div class="option" data-correct="false">hanno andati</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">👥 Bravissimo! Plural masculine subjects need "sono andati".</div>
+                            <div class="wrong-feedback">💡 Remember: with ESSERE, the past participle must agree! Marco e Luca = plural masculine.</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="4">
+                        <div class="question">What's wrong with "Io ho andato a scuola"?</div>
+                        <div class="options">
+                            <div class="option" data-correct="true">Should be "sono andato/a"</div>
+                            <div class="option" data-correct="false">Nothing, it's correct</div>
+                            <div class="option" data-correct="false">Should be "ho andando"</div>
+                            <div class="option" data-correct="false">Should be "andato ho"</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">🎯 Giusto! "Andare" always uses ESSERE, never AVERE.</div>
+                            <div class="wrong-feedback">🚫 This is the classic mistake! Movement verbs like "andare" use ESSERE.</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="5">
+                        <div class="question">Choose the correct form: "Le ragazze _____ _____ in Italia."</div>
+                        <div class="options">
+                            <div class="option" data-correct="false">sono andato</div>
+                            <div class="option" data-correct="false">sono andati</div>
+                            <div class="option" data-correct="true">sono andate</div>
+                            <div class="option" data-correct="false">hanno andate</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">👭 Perfetto! "Le ragazze" = feminine plural, so "andate".</div>
+                            <div class="wrong-feedback">💡 "Le ragazze" is feminine plural, so the participle ends in -e!</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="6">
+                        <div class="question">Complete: "Noi _____ _____ un gelato."</div>
+                        <div class="options">
+                            <div class="option" data-correct="true">abbiamo mangiato</div>
+                            <div class="option" data-correct="false">siamo mangiati</div>
+                            <div class="option" data-correct="false">abbiamo mangiati</div>
+                            <div class="option" data-correct="false">siamo mangiato</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">🍨 Bene! "Mangiare" uses AVERE and no agreement needed.</div>
+                            <div class="wrong-feedback">🤔 "Mangiare" is transitive (you eat something), so it uses AVERE!</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="7">
+                        <div class="question">Which verb uses ESSERE?</div>
+                        <div class="options">
+                            <div class="option" data-correct="false">comprare (to buy)</div>
+                            <div class="option" data-correct="true">partire (to leave)</div>
+                            <div class="option" data-correct="false">studiare (to study)</div>
+                            <div class="option" data-correct="false">guardare (to watch)</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">✈️ Esatto! "Partire" is a movement verb that uses ESSERE.</div>
+                            <div class="wrong-feedback">🎯 Think about movement! "Partire" means to leave/depart - it's about movement.</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="8">
+                        <div class="question">Complete: "La professoressa _____ _____ la lezione."</div>
+                        <div class="options">
+                            <div class="option" data-correct="true">ha spiegato</div>
+                            <div class="option" data-correct="false">è spiegata</div>
+                            <div class="option" data-correct="false">ha spiegata</div>
+                            <div class="option" data-correct="false">sono spiegato</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">👩‍🏫 Bravissima! "Spiegare" (to explain) uses AVERE.</div>
+                            <div class="wrong-feedback">📖 "Spiegare" is transitive - you explain something to someone, so AVERE!</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="9">
+                        <div class="question">What's the past participle of "essere"?</div>
+                        <div class="options">
+                            <div class="option" data-correct="false">essuto</div>
+                            <div class="option" data-correct="true">stato</div>
+                            <div class="option" data-correct="false">essere</div>
+                            <div class="option" data-correct="false">era</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">⭐ Perfetto! "Essere" → "stato/a/i/e"</div>
+                            <div class="wrong-feedback">🤓 This is irregular! "Essere" becomes "stato" in the past participle.</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-question="10">
+                        <div class="question">Complete Professor Bigfoot's example: "Io _____ _____ la mela."</div>
+                        <div class="options">
+                            <div class="option" data-correct="true">ho mangiato</div>
+                            <div class="option" data-correct="false">sono mangiato</div>
+                            <div class="option" data-correct="false">ho mangiata</div>
+                            <div class="option" data-correct="false">è mangiato</div>
+                        </div>
+                        <div class="feedback">
+                            <div class="correct-feedback">🍎 Eccellente! Just like Professor Bigfoot taught us!</div>
+                            <div class="wrong-feedback">🦶 Remember Professor Bigfoot's lesson: the action affects the apple, so AVERE!</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-nav">
+                        <button class="btn btn-secondary" id="prev-btn" onclick="previousQuestion()" disabled>Previous</button>
+                        <span id="question-info">Question 1 of 10</span>
+                        <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()">Next</button>
+                    </div>
+
+                    <div class="results" id="quiz-results">
+                        <h3 id="final-score">Quiz Complete!</h3>
+                        <div class="bigfoot-quote" id="bigfoot-message">
+                            "Excellent work! You're making great progress on this grammatical hike through the passato prossimo landscape!" - Professor Bigfoot 🦶
+                        </div>
+                        <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+                        <a href="https://youtu.be/Q42WlYlistc?si=uwiuiXIEgMCItMKp" class="btn btn-secondary" target="_blank">Review Video</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="practice">
+            <div class="container">
+                <h2>🎯 Practice Exercises</h2>
+                
+                <div class="exercise-grid">
+                    <div class="exercise-card">
+                        <h3>Fill in the Blanks</h3>
+                        <p>Complete these sentences with the correct auxiliary verb:</p>
+                        <div class="fill-blank">
+                            1. Lui <input type="text" class="blank" placeholder="ha/è"> mangiato una mela.
+                        </div>
+                        <div class="fill-blank">
+                            2. Noi <input type="text" class="blank" placeholder="abbiamo/siamo"> andati al mare.
+                        </div>
+                        <div class="fill-blank">
+                            3. Tu <input type="text" class="blank" placeholder="hai/sei"> comprato un libro.
+                        </div>
+                        <button class="btn btn-primary" onclick="checkFillBlanks(this)">Check Answers</button>
+                    </div>
+
+                    <div class="exercise-card">
+                        <h3>Verb Classification</h3>
+                        <p>Drag these verbs to the correct auxiliary:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                            <div style="border: 2px dashed #009246; padding: 20px; border-radius: 10px; text-align: center;">
+                                <h4>AVERE Verbs</h4>
+                                <div class="drop-zone" id="avere-zone"></div>
+                            </div>
+                            <div style="border: 2px dashed #ce2b37; padding: 20px; border-radius: 10px; text-align: center;">
+                                <h4>ESSERE Verbs</h4>
+                                <div class="drop-zone" id="essere-zone"></div>
+                            </div>
+                        </div>
+                        <div class="verb-list">
+                            <span class="draggable-verb" data-auxiliary="avere">studiare</span>
+                            <span class="draggable-verb" data-auxiliary="essere">arrivare</span>
+                            <span class="draggable-verb" data-auxiliary="avere">comprare</span>
+                            <span class="draggable-verb" data-auxiliary="essere">tornare</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <h3>Agreement Practice</h3>
+                        <p>Choose the correct past participle form:</p>
+                        <div class="agreement-exercise">
+                            <div class="agreement-question">
+                                Maria e Anna sono <select class="agreement-select">
+                                    <option value="">choose...</option>
+                                    <option value="andato">andato</option>
+                                    <option value="andata">andata</option>
+                                    <option value="andati">andati</option>
+                                    <option value="andate" data-correct="true">andate</option>
+                                </select> al supermercato.
+                            </div>
+                            <div class="agreement-question">
+                                Il professore è <select class="agreement-select">
+                                    <option value="">choose...</option>
+                                    <option value="arrivato" data-correct="true">arrivato</option>
+                                    <option value="arrivata">arrivata</option>
+                                    <option value="arrivati">arrivati</option>
+                                    <option value="arrivate">arrivate</option>
+                                </select> in classe.
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="checkAgreement(this)">Check Agreement</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" style="background: linear-gradient(135deg, #2c3e50, #34495e); color: white; padding: 40px 0;">
+        <div class="container">
+            <div style="text-align: center;">
+                <h3 style="color: #009246; margin-bottom: 20px;">Keep Learning with Italianissimo!</h3>
+                <div class="social-links">
+                    <a href="https://youtu.be/Q42WlYlistc?si=uwiuiXIEgMCItMKp" target="_blank">🎥</a>
+                    <a href="#" target="_blank">📱</a>
+                    <a href="#" target="_blank">📧</a>
+                </div>
+                <p style="margin-top: 20px; color: #bdc3c7;">&copy; 2025 Italianissimo. Imparare l'italiano insieme! 🇮🇹</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentQuestion = 1;
+        let totalQuestions = 10;
+        let score = 0;
+        let answered = false;
+
+        // Quiz functionality
+        function selectOption(element) {
+            if (answered) return;
+            
+            const options = element.parentNode.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            const isCorrect = element.dataset.correct === 'true';
+            answered = true;
+            
+            // Show results
+            setTimeout(() => {
+                options.forEach(opt => {
+                    if (opt.dataset.correct === 'true') {
+                        opt.classList.add('correct');
+                    } else if (opt.classList.contains('selected') && opt.dataset.correct === 'false') {
+                        opt.classList.add('wrong');
+                    }
+                });
+                
+                const feedback = element.closest('.quiz-card').querySelector('.feedback');
+                feedback.style.display = 'block';
+                feedback.classList.add('show');
+                
+                if (isCorrect) {
+                    feedback.innerHTML = feedback.querySelector('.correct-feedback').innerHTML;
+                    feedback.className = 'feedback show correct';
+                    score++;
+                } else {
+                    feedback.innerHTML = feedback.querySelector('.wrong-feedback').innerHTML;
+                    feedback.className = 'feedback show wrong';
+                }
+                
+                updateScore();
+                
+                // Enable next button
+                document.getElementById('next-btn').disabled = false;
+            }, 500);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                // Hide current question
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                currentQuestion++;
+                
+                // Show next question
+                const nextCard = document.querySelector(`[data-question="${currentQuestion}"]`);
+                if (nextCard) {
+                    nextCard.classList.add('active');
+                    answered = false;
+                    document.getElementById('next-btn').disabled = true;
+                }
+                
+                updateProgress();
+                updateNavigation();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                currentQuestion--;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                answered = true; // Assume previous questions were answered
+                document.getElementById('next-btn').disabled = false;
+                updateProgress();
+                updateNavigation();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('question-counter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+            document.getElementById('question-info').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = currentQuestion === 1;
+            
+            if (currentQuestion === totalQuestions) {
+                nextBtn.textContent = 'Finish Quiz';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = `${score}/${totalQuestions}`;
+        }
+
+        function showResults() {
+            // Hide quiz cards
+            document.querySelectorAll('.quiz-card').forEach(card => {
+                card.style.display = 'none';
+            });
+            
+            // Show results
+            const results = document.getElementById('quiz-results');
+            results.classList.add('show');
+            
+            const percentage = (score / totalQuestions) * 100;
+            let message = '';
+            let bigfootQuote = '';
+            
+            if (percentage >= 90) {
+                message = `🏆 Fantastico! ${score}/${totalQuestions} (${percentage}%)`;
+                bigfootQuote = '"Outstanding! You\'ve mastered this grammatical landscape like a true explorer!" - Professor Bigfoot 🦶';
+            } else if (percentage >= 70) {
+                message = `👏 Molto Bene! ${score}/${totalQuestions} (${percentage}%)`;
+                bigfootQuote = '"Good work! You\'re finding your way through the passato prossimo forest!" - Professor Bigfoot 🦶';
+            } else if (percentage >= 50) {
+                message = `📚 Bene! ${score}/${totalQuestions} (${percentage}%)`;
+                bigfootQuote = '"You\'re on the right path! Keep practicing and you\'ll master this terrain!" - Professor Bigfoot 🦶';
+            } else {
+                message = `💪 Keep Practicing! ${score}/${totalQuestions} (${percentage}%)`;
+                bigfootQuote = '"Every expert was once a beginner! This grammatical hike takes practice!" - Professor Bigfoot 🦶';
+            }
+            
+            document.getElementById('final-score').textContent = message;
+            document.getElementById('bigfoot-message').innerHTML = bigfootQuote;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 1;
+            score = 0;
+            answered = false;
+            
+            // Reset all cards
+            document.querySelectorAll('.quiz-card').forEach(card => {
+                card.style.display = 'none';
+                card.classList.remove('active');
+                
+                // Reset options
+                card.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'wrong');
+                });
+                
+                // Reset feedback
+                const feedback = card.querySelector('.feedback');
+                feedback.style.display = 'none';
+                feedback.classList.remove('show', 'correct', 'wrong');
+            });
+            
+            // Show first question
+            document.querySelector('[data-question="1"]').classList.add('active');
+            document.querySelector('[data-question="1"]').style.display = 'block';
+            
+            // Hide results
+            document.getElementById('quiz-results').classList.remove('show');
+            
+            // Reset navigation
+            document.getElementById('next-btn').disabled = true;
+            document.getElementById('next-btn').textContent = 'Next';
+            updateProgress();
+            updateNavigation();
+            updateScore();
+        }
+
+        // Add click handlers to quiz options
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    selectOption(this);
+                });
+            });
+            
+            // Initialize first question
+            updateProgress();
+            updateScore();
+        });
+
+        // Fill in the blanks exercise
+        function checkFillBlanks(button) {
+            const card = button.closest('.exercise-card');
+            const inputs = card.querySelectorAll('input');
+            const answers = ['ha', 'siamo', 'hai'];
+            
+            inputs.forEach((input, index) => {
+                const userAnswer = input.value.toLowerCase().trim();
+                const correctAnswer = answers[index];
+                
+                if (userAnswer === correctAnswer) {
+                    input.style.borderColor = '#009246';
+                    input.style.backgroundColor = 'rgba(0, 146, 70, 0.2)';
+                } else {
+                    input.style.borderColor = '#ce2b37';
+                    input.style.backgroundColor = 'rgba(206, 43, 55, 0.2)';
+                    input.value = correctAnswer;
+                }
+            });
+            
+            button.textContent = 'Checked! ✓';
+            button.style.background = '#009246';
+        }
+
+        // Agreement exercise
+        function checkAgreement(button) {
+            const card = button.closest('.exercise-card');
+            const selects = card.querySelectorAll('select');
+            
+            selects.forEach(select => {
+                const selectedOption = select.options[select.selectedIndex];
+                const isCorrect = selectedOption.hasAttribute('data-correct');
+                
+                if (isCorrect) {
+                    select.style.borderColor = '#009246';
+                    select.style.backgroundColor = 'rgba(0, 146, 70, 0.2)';
+                } else {
+                    select.style.borderColor = '#ce2b37';
+                    select.style.backgroundColor = 'rgba(206, 43, 55, 0.2)';
+                    // Show correct answer
+                    const correctOption = select.querySelector('[data-correct="true"]');
+                    if (correctOption) {
+                        select.value = correctOption.value;
+                    }
+                }
+            });
+            
+            button.textContent = 'Checked! ✓';
+            button.style.background = '#009246';
+        }
+
+        // Draggable verbs functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add styles for draggable elements
+            const style = document.createElement('style');
+            style.textContent = `
+                .verb-list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    margin-top: 20px;
+                    justify-content: center;
+                }
+                
+                .draggable-verb {
+                    background: #58a6ff;
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 20px;
+                    cursor: move;
+                    user-select: none;
+                    transition: all 0.3s ease;
+                }
+                
+                .draggable-verb:hover {
+                    transform: scale(1.05);
+                    background: #4493f8;
+                }
+                
+                .drop-zone {
+                    min-height: 60px;
+                    border: 2px dashed #ccc;
+                    border-radius: 10px;
+                    margin-top: 10px;
+                    padding: 10px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                .drop-zone.dragover {
+                    border-color: #009246;
+                    background: rgba(0, 146, 70, 0.1);
+                }
+                
+                .agreement-exercise {
+                    margin: 20px 0;
+                }
+                
+                .agreement-question {
+                    margin: 15px 0;
+                    font-size: 18px;
+                    text-align: center;
+                }
+                
+                .agreement-select {
+                    padding: 8px 12px;
+                    border: 2px solid #009246;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    margin: 0 5px;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
